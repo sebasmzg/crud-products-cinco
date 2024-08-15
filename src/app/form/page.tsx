@@ -36,8 +36,16 @@ const ProductPage: React.FC = () => {
 
     return (
         <div>
-            <a href="/">Home</a>
-            <a href="/table">Tablas</a>
+            <div className="flex flex-row flex-nowrap w-96 ">
+                <button >
+                    <a href="/" className=" no-underline focus:outline-none">Home</a>
+                </button>
+                <br />
+                <button>
+                    <a href="/table">tablas</a>
+                </button>
+            </div>
+            
             <h1>Products</h1>
             <form onSubmit={(e) => {
                 e.preventDefault();

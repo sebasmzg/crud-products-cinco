@@ -105,11 +105,16 @@ const ProductPage: React.FC = () => {
 
     return (
         <>
-            <div>
-                <a href="/">Home</a>
+            <div className='flex flex-row flex-nowrap w-96 ' >
+                <button>
+                    <a href="/">Home</a>
+                </button>
                 <br />
-                <a href="/form">Form</a>
+                <button>
+                    <a href="/form">Formularios</a>
+                </button>
             </div>
+          
             <table>
                 <thead>
                     <tr>
