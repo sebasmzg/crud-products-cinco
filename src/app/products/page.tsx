@@ -23,9 +23,80 @@ const ProductPage: React.FC = () => { // Cuando es React.FC significa que es un 
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState('');
 
+    // El useEffect lo que hace es que después de que muestre la interfaz de usuario me hace algo más
+    useEffect(() => {
+        // Cargar productos desde el localStorage
+        const storedProducts = localStorage.getItem('products');
+        if (storedProducts) {
+            setProducts(JSON.parse(storedProducts));
+        }
+    }, []);
+
+    useEffect(() => {
+        // Guardar productos en el localStorage
+        localStorage.setItem('products', JSON.stringify(products));
+    }, [products]);
+
+    // Función para Crear los productos
+    const addProduct = () => {
+        const newProduct: Product = {
+            id: Date.now(),
+            title,
+            price,
+            description,
+            image,
+        };
+        // Añado el nuevo producto al array de productos y resetea los campos del formulario (Actualiza)
+        setProducts([...products, newProduct]); // El nuevo producto se añade al final del Array
+        setTitle('');
+        setDescription('');
+        setPrice(0); 
+        setImage('');
+    };
+
     // El componente me devuelve un JSX
     return (
         // Aquí se renderiza el contenido del componente
+        <div>
+            <h1>Products</h1>
+            {/* Formulario con los inputs para guardar el producto */}
+            <form onSubmit={(e) => { e.preventDefault(); addProduct(); }}>
+                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                <input type="number" placeholder="Price" value={price} onChange={(e) => setPrice(Number(e.target.value))}/>
+                <input type="text" placeholder="Image URL" value={image} onChange={(e) => setImage(e.target.value)}/>
+                <button type="submit">Add Product</button>
+            </form>
+            {/* Tabla donde se muestran los productos */}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map((product) => (
+                        // La función map itera sobre cada objeto del array
+                        // La propiedad key es importante en React para identificar de manera única cada elemento
+                        <tr key={product.id}> 
+                            <td>{product.title}</td>
+                            <td>{product.description}</td>
+                            <td>${product.price.toFixed(2)}</td>
+                            <td>
+                                <img src={product.image} alt={product.title} style={{ width: '50px' }}/>
+                            </td>
+                            <td>
+                                <button>Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
 };
 
