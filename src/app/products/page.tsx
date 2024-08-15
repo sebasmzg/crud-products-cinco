@@ -54,6 +54,12 @@ const ProductPage: React.FC = () => { // Cuando es React.FC significa que es un 
         setImage('');
     };
 
+    // Función para Eliminar productos
+    const deleteProduct = (id: number) => {
+        const updatedProducts = products.filter((product) => product.id !== id);
+        setProducts(updatedProducts);
+    };
+
     // El componente me devuelve un JSX
     return (
         // Aquí se renderiza el contenido del componente
@@ -90,7 +96,7 @@ const ProductPage: React.FC = () => { // Cuando es React.FC significa que es un 
                                 <img src={product.image} alt={product.title} style={{ width: '50px' }}/>
                             </td>
                             <td>
-                                <button>Delete</button>
+                                <button onClick={() => deleteProduct(product.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}
