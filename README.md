@@ -49,6 +49,9 @@ La aplicación estará disponible en http://localhost:3001, ambos comandos son v
 
 - Las contribuciones son bienvenidas. Si tienes alguna mejora o corrección, por favor abre un pull request o issue.
 
+## Link funcionalidad:
+https://www.loom.com/share/17340d893b9041daa666a7c9ef693be1?sid=13e27d25-0ceb-4d8c-ad78-a75d320a0e4e
+
 <p align="center">
     <img src="https://riwi.io/wp-content/uploads/2023/07/favicon.png" alt="TypeScript" width="100" height="100" style="margin: 0 20px;"/>
 </p>
@@ -56,3 +59,4 @@ La aplicación estará disponible en http://localhost:3001, ambos comandos son v
 <p align="center">
     <strong>Riwi Be a Coder</strong>
 </p>
+
